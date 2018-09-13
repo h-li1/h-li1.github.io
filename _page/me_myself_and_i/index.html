@@ -1,0 +1,164 @@
+<html class="memyselfandi">
+<head>
+<title>ME MYSELF AND I - ERIC LI</title>
+<link rel="shortcut icon" href="../../logo.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../css/main.css">
+<script src="../../js/main.js"></script>
+<script src="../../js/jquery_1_11_3_min.js"></script>
+<script src="../../js/stellar.js"></script>
+<script>
+		$(function(){
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 0
+			});
+		});
+</script>
+<script>
+        var cvs = document.querySelector("canvas");
+        var ctx = cvs.getContext("2d");
+        var ballsArr = [];
+ 
+        function Balls (x, y){
+            this.x = x;
+            this.y = y;
+            this.r = _.random(5, 10);
+            this.c = _.sample(["red", "orange", "yellow", "green", "cyan", "blue", "white"]);
+            this.dx = _.random(-4, 4);
+            this.dy = _.random(-4, 4);
+            ballsArr.push(this);
+        }
+ 
+        Balls.prototype.update = function (){
+            this.x += this.dx;
+            this.y += this.dy;
+            this.r -= 0.5;
+            if(this.r <= 0){
+                _.without(ballsArr, this);
+            }
+        }
+ 
+        Balls.prototype.render = function (){
+            if(this.r <= 0){
+                return;
+            }
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+            ctx.fillStyle = this.c;
+            ctx.fill();
+            ctx.closePath();    
+        }
+ 
+        cvs.onmousemove = function (){
+            new Balls(event.offsetX, event.offsetY);
+            new Balls(event.offsetX, event.offsetY);
+        }
+ 
+        setInterval(function (){
+            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            _.each(ballsArr, function (value){
+                value.update();
+                value.render();
+            });
+        }, 40);
+</script>
+</head>
+<body onload="showInfo(); greeting(); rdmQuote()">
+<div class="top">
+	<div class="current">ME MYSELF AND I</div>
+	<div id="btn" class="btn" onclick="navi()">NAVIGATION</div>
+</div>
+<div id="feature" class="feature" data-stellar-background-ratio="0.2">
+	<div class="brightness"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+	<div class="photo"></div>
+</div>
+<div class="main">
+	<div class="comment na" onclick="shutFriendscomment()">
+	<p>1. thoughtful and adventurous</p>
+	<p>2. considerate</p>
+	<p>3. good-tempered</p>
+	<p>4. poor implementation capacity but have enthusiasm for things that interest me</p>
+	<p>5. lovely and cheerful</p>
+	<p>6. desire to advance</p>
+	<p>7. sometimes lose confidence</p>
+	<p>8. know how to observe beautiful things in life</p>
+	<p>9. "his most obvious characteristic is having no characteristic"</p>
+	<p>in summary - a person that is gentle, authentic and frank</p>
+	<p>click to step back</p>
+	</div>
+	<div class="content">
+			<div class="quote na"><!-- START QUOTE -->
+		"the only way to do great work is to love what you do."
+	</div><!-- CLOSE QUOTE -->
+	<div class="quote na"><!-- START QUOTE -->
+		"today's accomplishments were yesterday's impossibilities."
+	</div><!-- CLOSE QUOTE -->
+	<div class="quote na"><!-- START QUOTE -->
+		"just because my path is different, doesn't mean I'm lost."
+	</div><!-- CLOSE QUOTE -->
+
+		<div class="hi">
+			hi I'm Eric li. Nice to meet you.<br /><br /> 
+			<span class="btn" onclick="friendscomment()">wonder how my friend comments on me?</span><br />
+			<span class="btn" onclick="window.location.href= '../../_page/get_in_touch/index.html';return false">wanna get in touch with me?</span><br />
+			<span class="btn dowehavethesametaste" onclick="taste()">do we have the same taste?</span>					
+			<span id="tryme" class="btn na clickmeandtry" onclick="tryme()");>click me and try</span>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<iframe width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+<div class="nav"><!-- START NAV -->
+	<div class="nav_content"><!-- START NAV CONTENT -->
+		<span onclick="window.location.href= '../../index.html';return false">HOMEPAGE</span><br />
+		<span  onclick="window.location.href= '../my_stories/index.html';return false">my stories</span><br />
+		<span onclick="window.location.href= '../my_music_cover/index.html';return false">my music cover</span><br />
+		<span id="current" onclick="window.location.href= '../me_myself_and_i/index.html';return false">me myself and i</span><br />
+		<span onclick="window.location.href= '../get_in_touch/index.html';return false">get in touch</span>
+		<div class="close_btn" onclick="closeNavi()"></div>
+	</div><!-- CLOSE NAV CONTENT -->
+</div><!-- CLOSE NAV -->
+<div class="nav_bg"></div><!-- CLOSE NAV BG -->
+
+<div class="ua">Good <span id="greeting"></span>! You are using <span id="browsertype"></span> with <span id="platform"></span>.</div>
+</body>
+</html>

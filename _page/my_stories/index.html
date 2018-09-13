@@ -1,0 +1,169 @@
+<html class="mystories">
+<head>
+<title>MY STORIES - ERIC LI</title>
+<link rel="shortcut icon" href="../../logo.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../css/main.css">
+<script src="../../js/main.js"></script>
+<script src="../../js/jquery_1_11_3_min.js"></script>
+<script src="../../js/stellar.js"></script>
+<script>
+		$(function(){
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 0
+			});
+		});
+</script>
+<script>
+        var cvs = document.querySelector("canvas");
+        var ctx = cvs.getContext("2d");
+        var ballsArr = [];
+ 
+        function Balls (x, y){
+            this.x = x;
+            this.y = y;
+            this.r = _.random(5, 10);
+            this.c = _.sample(["red", "orange", "yellow", "green", "cyan", "blue", "white"]);
+            this.dx = _.random(-4, 4);
+            this.dy = _.random(-4, 4);
+            ballsArr.push(this);
+        }
+ 
+        Balls.prototype.update = function (){
+            this.x += this.dx;
+            this.y += this.dy;
+            this.r -= 0.5;
+            if(this.r <= 0){
+                _.without(ballsArr, this);
+            }
+        }
+ 
+        Balls.prototype.render = function (){
+            if(this.r <= 0){
+                return;
+            }
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+            ctx.fillStyle = this.c;
+            ctx.fill();
+            ctx.closePath();    
+        }
+ 
+        cvs.onmousemove = function (){
+            new Balls(event.offsetX, event.offsetY);
+            new Balls(event.offsetX, event.offsetY);
+        }
+ 
+        setInterval(function (){
+            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            _.each(ballsArr, function (value){
+                value.update();
+                value.render();
+            });
+        }, 40);
+</script>
+</head>
+<body onload="showInfo(); greeting(); rdmQuote()">
+<div class="na fullscreenblack" onmouseover="shutHdPhoto()">
+<div class="container">
+<div class="circle-container">
+<div class="circle"></div>
+</div>
+<div class="circle-container">
+<div class="circle"></div>
+</div>
+<div class="circle-container">
+<div class="circle"></div>
+</div>
+</div>
+</div><div class="na hdphoto"><a download></a></div>
+
+<div class="top">
+	<div class="current">MY STORIES</div>
+	<div id="btn" class="btn" onclick="navi()">NAVIGATION</div>
+</div>
+<div class="feature" data-stellar-background-ratio="0.2">
+	<div class="brightness"></div>
+	<div class="title">
+		<span>Welcome To My Stories</span><br />
+		<span onclick="window.location.href= 'https://github.com/h-li1/h-li1.github.io/tree/master/image_hd/phone';return false" class="remark">Download Photos from my Github</span>
+		<div id="featureremark" class="featureremark">this feature image is metro line 4 in suzhou p.r.c.</div>
+	</div>
+</div>
+
+<div class="main">
+<!--
+	<div class="model">
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+		<div>testetstetstetsbkjsnxkjs</div>
+	</div>
+-->
+	<div class="module">
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+	</div>
+	<div class="module2">
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork"></div>
+		<div class="artwork" onclick="hdPhoto();attrHdPhoto()"></div>
+	</div>
+	<div class="footer">&copy eric li</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="nav"><!-- START NAV -->
+	<div class="nav_content"><!-- START NAV CONTENT -->
+		<span onclick="window.location.href= '../../index.html';return false">HOMEPAGE</span><br />
+		<span id="current" onclick="window.location.href= '../my_stories/index.html';return false">my stories</span><br />
+		<span onclick="window.location.href= '../my_music_cover/index.html';return false">my music cover</span><br />
+		<span onclick="window.location.href= '../me_myself_and_i/index.html';return false">me myself and i</span><br />
+		<span onclick="window.location.href= '../get_in_touch/index.html';return false">get in touch</span>
+		<div class="close_btn" onclick="closeNavi()"></div>
+	</div><!-- CLOSE NAV CONTENT -->
+</div><!-- CLOSE NAV -->
+<div class="nav_bg"></div><!-- CLOSE NAV BG -->
+
+<div class="ua">Good <span id="greeting"></span>! You are using <span id="browsertype"></span> with <span id="platform"></span>.</div>
+</body>
+</html>

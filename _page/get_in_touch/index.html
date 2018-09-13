@@ -1,0 +1,135 @@
+<html class="getintouch">
+<head>
+<title>GET IN TOUCH - ERIC LI</title>
+<link rel="shortcut icon" href="../../logo.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../css/main.css">
+<script src="../../js/main.js"></script>
+<script src="../../js/jquery_1_11_3_min.js"></script>
+<script src="../../js/stellar.js"></script>
+<script>
+		$(function(){
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 0
+			});
+		});
+</script>
+<script>
+        var cvs = document.querySelector("canvas");
+        var ctx = cvs.getContext("2d");
+        var ballsArr = [];
+ 
+        function Balls (x, y){
+            this.x = x;
+            this.y = y;
+            this.r = _.random(5, 10);
+            this.c = _.sample(["red", "orange", "yellow", "green", "cyan", "blue", "white"]);
+            this.dx = _.random(-4, 4);
+            this.dy = _.random(-4, 4);
+            ballsArr.push(this);
+        }
+ 
+        Balls.prototype.update = function (){
+            this.x += this.dx;
+            this.y += this.dy;
+            this.r -= 0.5;
+            if(this.r <= 0){
+                _.without(ballsArr, this);
+            }
+        }
+ 
+        Balls.prototype.render = function (){
+            if(this.r <= 0){
+                return;
+            }
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+            ctx.fillStyle = this.c;
+            ctx.fill();
+            ctx.closePath();    
+        }
+ 
+        cvs.onmousemove = function (){
+            new Balls(event.offsetX, event.offsetY);
+            new Balls(event.offsetX, event.offsetY);
+        }
+ 
+        setInterval(function (){
+            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            _.each(ballsArr, function (value){
+                value.update();
+                value.render();
+            });
+        }, 40);
+</script>
+</head>
+<body onload="showInfo(); greeting()">
+<div class="top">
+	<div class="current">GET IN TOUCH</div>
+	<div id="btn" class="btn" onclick="navi()">NAVIGATION</div>
+</div>
+<div class="feature" data-stellar-background-ratio="0.2">
+	<div class="brightness"></div>
+	<div class="title">
+		<span>+61 401 079 227</span><br />
+		<span class="remark">ericli.hl@gmail.com</span>
+		<div id="featureremark" class="featureremark" style="left:30px">formal 2017 at Brighton international</div>
+	</div>
+</div>
+
+<div class="main">
+	<div class="raw">
+		<div class="card">
+			<div class="flip">
+				<div class="front">WeChat</div>
+				<div class="back"><img alt="QR Code for my WeChat" src="../../image/getintouch_wechat.png" width="150px" height="150px"></div>
+			</div>
+		</div><!-- CLOSE CARD -->
+		<div class="card">
+			<div class="flip">
+				<div class="front">QQ</div>
+				<div class="back"><img alt="QR Code for my QQ" src="../../image/getintouch_qq.png" width="150px" height="150px"></div>
+			</div>
+		</div><!-- CLOSE CARD -->
+	</div>
+	<div class="raw">
+		<div class="card">
+			<div class="flip">
+				<div class="front">SnapChat</div>
+				<div class="back"><img id="sc" alt="QR Code for my SnapChat" src="../../image/getintouch_sc.png" width="130px" height="130px"></div>
+			</div>
+		</div><!-- CLOSE CARD -->
+		<div class="card">
+			<div class="flip">
+				<div class="front">Instagram</div>
+				<div class="back">__ericli</div>
+			</div>
+		</div><!-- CLOSE CARD -->
+		<div class="card">
+			<div class="flip">
+				<div class="front">Fb Messenger</div>
+				<div class="back"><img id="sc" alt="QR Code for my FB Messenger" src="../../image/getintouch_fbm.png" width="150px" height="150px"></div>
+			</div>
+		</div><!-- CLOSE CARD -->
+	</div>
+	<div class="raw">
+<iframe src="" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</div>
+	<div class="footer">&copy eric li</div>
+</div>
+<div class="nav"><!-- START NAV -->
+	<div class="nav_content"><!-- START NAV CONTENT -->
+		<span onclick="window.location.href= '../../index.html';return false">HOMEPAGE</span><br />
+		<span  onclick="window.location.href= '../../_page/my_stories/index.html';return false">my stories</span><br />
+		<span onclick="window.location.href= '../../_page/my_music_cover/index.html';return false">my music cover</span><br />
+		<span onclick="window.location.href= '../../_page/me_myself_and_i/index.html';return false">me myself and i</span><br />
+		<span id="current" onclick="window.location.href= './_page/get_in_touch/index.html';return false">get in touch</span>
+		<div class="close_btn" onclick="closeNavi()"></div>
+	</div><!-- CLOSE NAV CONTENT -->
+</div><!-- CLOSE NAV -->
+
+<div class="nav_bg"></div><!-- CLOSE NAV BG -->
+
+<div class="ua">Good <span id="greeting"></span>! You are using <span id="browsertype"></span> with <span id="platform"></span>.</div>
+</body>
+</html>

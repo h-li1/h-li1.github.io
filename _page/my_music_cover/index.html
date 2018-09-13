@@ -1,0 +1,289 @@
+<html class="mymusiccover">
+<head>
+<title>MY MUSIC COVER - ERIC LI</title>
+<link rel="shortcut icon" href="../../logo.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Righteous|Sacramento|Luckiest+Guy|Sniglet" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<script src="../../js/main.js"></script>
+<script src="../../js/jquery_1_11_3_min.js"></script>
+<script src="../../js/stellar.js"></script>
+<script>
+		$(function(){
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 0
+			});
+		});
+</script>
+<script>
+        var cvs = document.querySelector("canvas");
+        var ctx = cvs.getContext("2d");
+        var ballsArr = [];
+ 
+        function Balls (x, y){
+            this.x = x;
+            this.y = y;
+            this.r = _.random(5, 10);
+            this.c = _.sample(["red", "orange", "yellow", "green", "cyan", "blue", "white"]);
+            this.dx = _.random(-4, 4);
+            this.dy = _.random(-4, 4);
+            ballsArr.push(this);
+        }
+ 
+        Balls.prototype.update = function (){
+            this.x += this.dx;
+            this.y += this.dy;
+            this.r -= 0.5;
+            if(this.r <= 0){
+                _.without(ballsArr, this);
+            }
+        }
+ 
+        Balls.prototype.render = function (){
+            if(this.r <= 0){
+                return;
+            }
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+            ctx.fillStyle = this.c;
+            ctx.fill();
+            ctx.closePath();    
+        }
+ 
+        cvs.onmousemove = function (){
+            new Balls(event.offsetX, event.offsetY);
+            new Balls(event.offsetX, event.offsetY);
+        }
+ 
+        setInterval(function (){
+            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            _.each(ballsArr, function (value){
+                value.update();
+                value.render();
+            });
+        }, 40);
+</script>
+</head>
+<body onload="showInfo(); greeting()">
+<div class="top">
+	<div class="current">MY MUSIC COVER</div>
+	<div id="btn" class="btn" onclick="navi()">NAVIGATION</div>
+</div>
+<div class="feature" data-stellar-background-ratio="0.2">
+	<div class="brightness"></div>
+	<div class="title">
+		<span>Me On WeSing</span><br />
+		<span class="remark">Click album and play demo</span>
+		<div class="featureremark">metro train station (line 4) in suzhou p.r.c.</div>
+	</div>
+</div>
+<div class="main">
+<div class="single" id="single1"><!-- SINGLE DEMO 1 -->
+<audio loop class="demo" id="demo1" autobuffer><source src="../../audio/demo_notbreakinglove.mp3">
+</source></audio>
+<div class="album" id="demo-1" onclick="playDemo1()" onmouseout="stopDemo1()"></div>
+<div class="title">not breaking love</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>73 listened</div>
+<div class="published-on">date published: Feb 6 2018</div><p></p>
+<div class="orginal">original: silence wong</div>
+<div class="in-album">album: good quiet</div>
+<div class="duration">demo duration: 25s approx.</div>
+<a href="../../audio/demo_notbreakinglove.mp3" class="save" id="save-demo1" download>save demo</a>
+<a class="na ed" id="ed-demo1">complete edition</a>
+<div class="badge">superior cover</div>
+</div><!-- CLOSE SINGLE -->
+
+
+<div class="single" id="single3"><!-- SINGLE DEMO 3 -->
+<audio loop class="demo" id="demo3" autobuffer><source src="../../audio/demo_valderfields.mp3">
+</source></audio>
+<div class="album" id="demo-3" onclick="playDemo3()" onmouseout="stopDemo3()"></div>
+<div class="title">valder fields</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>147 listened</div>
+<div class="published-on">date published: May 2 2016</div><p></p>
+<div class="orginal">original: tamas wells</div>
+<div class="in-album">album: A Plea En Vendredi</div>
+<div class="duration">demo duration: 40s approx.</div>
+<a href="../../audio/demo_valderfields.mp3" class="save" id="save-demo3" download>save demo</a>
+<a class="na ed" id="ed-demo3">complete edition</a>
+</div><!-- CLOSE SINGLE -->
+<div class="single" id="single10"><!-- SINGLE DEMO 10 -->
+<audio loop class="demo" id="demo10" autobuffer><source src="../../audio/demo_lisao.mp3">
+</source></audio>
+<div class="album" id="demo-10" onclick="playDemo10()" onmouseout="stopDemo10()"></div>
+<div class="title">li Sao</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>35 listened</div>
+<div class="published-on">date published: Jun 13 2017</div><p></p>
+<div class="orginal">original: Yi Yangqianxi</div>
+<div class="duration">demo duration: 10s approx.</div>
+<a href="../../audio/demo_lisao.mp3" class="save" id="save-demo10" download>save demo</a>
+<a class="mv na" id="mv-demo10">original MV</a>
+<a class="na ed" id="ed-demo10">complete edition</a>
+<div class="badge">superior cover</div>
+</div><!-- CLOSE SINGLE -->
+<div class="single" id="single6"><!-- SINGLE DEMO 6 -->
+<audio loop class="demo" id="demo6" autobuffer><source src="../../audio/demo_shanyoumuxi.mp3">
+</source></audio>
+<div class="album" id="demo-6" onclick="playDemo6()" onmouseout="stopDemo6()"></div>
+<div class="title">shan you mu xi</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>201 listened</div>
+<div class="published-on">date published: Dec 25 2017</div><p></p>
+<div class="orginal">original: ChengGuang Studio</div>
+<div class="duration">demo duration: 30s approx.</div>
+<a href="../../audio/demo_shanyoumuxi.mp3" class="save" id="save-demo6" download>save demo</a>
+<a class="mv na" id="mv-demo6">original MV</a>
+<a class="na ed" id="ed-demo6">complete edition</a>
+<div class="badge">superior cover</div>
+</div><!-- CLOSE SINGLE -->
+<div class="single" id="single11"><!-- SINGLE DEMO 11 -->
+<audio loop class="demo" id="demo11" autobuffer><source src="../../audio/demo_pipaxing.mp3">
+</source></audio>
+<div class="album" id="demo-11" onclick="playDemo11()" onmouseout="stopDemo11()"></div>
+<div class="title">pi pa xing</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>376 listened</div>
+<div class="published-on">date published: May 14 2017</div><p></p>
+<div class="orginal">original: qi ran</div>
+<div class="duration">demo duration: 10s approx.</div>
+<a href="../../audio/demo_pipaxing.mp3" class="save" id="save-demo11" download>save demo</a>
+<a class="mv na" id="mv-demo11">original MV</a>
+<a class="na ed" id="ed-demo11">complete edition</a>
+</div><!-- CLOSE SINGLE -->
+
+<div class="single" id="single12"><!-- SINGLE DEMO 12 -->
+<audio loop class="demo" id="demo12" autobuffer><source src="../../audio/demo_yizhanchengming.mp3">
+</source></audio>
+<div class="album" id="demo-12" onclick="playDemo12()" onmouseout="stopDemo12()"></div>
+<div class="title">yi zhan cheng ming</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>94 listened</div>
+<div class="published-on">date published: May 28 2018</div><p></p>
+<div class="orginal">original: qi ran</div>
+<div class="duration">demo duration: 10s approx.</div>
+<a href="../../audio/demo_yizhanchengming.mp3" class="save" id="save-demo12" download>save demo</a>
+<a class="mv na" id="mv-demo12">original MV</a>
+<a class="na ed" id="ed-demo12">complete edition</a>
+</div><!-- CLOSE SINGLE -->
+
+<div class="single" id="single4"><!-- SINGLE DEMO 4 -->
+<audio loop class="demo" id="demo4" autobuffer><source src="../../audio/demo_fireworks.mp3">
+</source></audio>
+<div class="album" id="demo-4" onclick="playDemo4()" onmouseout="stopDemo4()"></div>
+<div class="title">fireworks</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>204 listened</div>
+<div class="published-on">date published: Mar 26 2016</div><p></p>
+<div class="orginal">original: Xiang Chen</div>
+<div class="in-album">album: TV serial soundtrack</div>
+<div class="duration">demo duration: 25s approx.</div>
+<a href="../../audio/demo_fireworks.mp3" class="save" id="save-demo4" download>save demo</a>
+<a class="na ed" id="ed-demo4">complete edition</a>
+</div><!-- CLOSE SINGLE -->
+
+<div class="single" id="single5"><!-- SINGLE DEMO 5 -->
+<audio loop class="demo" id="demo5" autobuffer><source src="../../audio/demo_chongai.mp3">
+</source></audio>
+<div class="album" id="demo-5" onclick="playDemo5()" onmouseout="stopDemo5()"></div>
+<div class="title">chong ai</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>172 listened</div>
+<div class="published-on">date published: May 18 2016</div><p></p>
+<div class="orginal">original: TFBOYS</div>
+<div class="in-album">album: the big dreamer</div>
+<div class="duration">demo duration: 35s approx.</div>
+<a href="../../audio/demo_chongai.mp3" class="save" id="save-demo5" download>save demo</a>
+<a class="na ed" id="ed-demo5">complete edition</a>
+</div><!-- CLOSE SINGLE -->
+
+
+<div class="single" id="single2"><!-- SINGLE DEMO 2 -->
+<audio loop class="demo" id="demo2" autobuffer><source src="../../audio/demo_buzailianxi.mp3">
+</source></audio>
+<div class="album" id="demo-2" onclick="playDemo2()" onmouseout="stopDemo2()"></div>
+<div class="title">bu zai lian xi</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>151 listened</div>
+<div class="published-on">date published: May 28 2016</div><p></p>
+<div class="orginal">original: alex xia</div>
+<div class="in-album">album: destruction law</div>
+<div class="duration">demo duration: 20s approx.</div>
+<a href="../../audio/demo_buzailianxi.mp3" class="save" id="save-demo2" download>save demo</a>
+<a class="na ed" id="ed-demo2">complete edition</a>
+<div class="badge">electrical effect</div>
+</div><!-- CLOSE SINGLE -->
+
+
+<div class="single" id="single7"><!-- SINGLE DEMO 7 -->
+<audio loop class="demo" id="demo7" autobuffer><source src="../../audio/demo_dainiqulvxing.mp3">
+</source></audio>
+<div class="album" id="demo-7" onclick="playDemo7()" onmouseout="stopDemo7()"></div>
+<div class="title">take you to travel</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>34 listened</div>
+<div class="published-on">date published: Dec 23 2015</div><p></p>
+<div class="orginal">original: Xiao Zhang</div>
+<div class="duration">demo duration: 15s approx.</div>
+<a href="../../audio/demo_dainiqulvxing.mp3" class="save" id="save-demo7" download>save demo</a>
+<a class="mv na" id="mv-demo7">original MV</a>
+<a class="na ed" id="ed-demo7">complete edition</a>
+</div><!-- CLOSE SINGLE -->
+
+
+<div class="single" id="single8"><!-- SINGLE DEMO 8 -->
+<audio loop class="demo" id="demo8" autobuffer><source src="../../audio/demo_huanshimensheng.mp3">
+</source></audio>
+<div class="album" id="demo-8" onclick="playDemo8()" onmouseout="stopDemo8()"></div>
+<div class="title">huan shi men sheng</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>34 listened</div>
+<div class="published-on">date published: Dec 23 2018</div><p></p>
+<div class="orginal">original: ming yue</div>
+<div class="duration">demo duration: 15s approx.</div>
+<a href="../../audio/demo_huanshimensheng.mp3" class="save" id="save-demo8" download>save demo</a>
+<a class="mv na" id="mv-demo8">original MV</a>
+<a class="na ed" id="ed-demo8">complete edition</a>
+</div><!-- CLOSE SINGLE -->
+
+<div class="single" id="single9"><!-- SINGLE DEMO 9 -->
+<audio loop class="demo" id="demo9" autobuffer><source src="../../audio/demo_lingjiao.mp3">
+</source></audio>
+<div class="album" id="demo-9" onclick="playDemo9()" onmouseout="stopDemo9()"></div>
+<div class="title">ling jiao</div>
+<div class="wesing">WeSing</div>
+<div class="listened"><span></span>199 listened</div>
+<div class="published-on">date published: -</div><p></p>
+<div class="duration">demo duration: 30s approx.</div>
+<a href="../../audio/demo_lingjiao.mp3" class="save" id="save-demo9" download>save demo</a>
+<a class="mv na" id="mv-demo9">original MV</a>
+<a class="na ed" id="ed-demo9">complete edition</a>
+</div><!-- CLOSE SINGLE -->
+
+
+<div class="footer">&copy eric li</div>
+</div>
+
+
+
+
+
+
+
+<div class="nav"><!-- START NAV -->
+	<div class="nav_content"><!-- START NAV CONTENT -->
+		<span onclick="window.location.href= '../../index.html';return false">HOMEPAGE</span><br />
+		<span  onclick="window.location.href= '../my_stories/index.html';return false">my stories</span><br />
+		<span id="current" onclick="window.location.href= '../my_music_cover/index.html';return false">my music cover</span><br />
+		<span onclick="window.location.href= '../me_myself_and_i/index.html';return false">me myself and i</span><br />
+		<span onclick="window.location.href= '../get_in_touch/index.html';return false">get in touch</span>
+		<div class="close_btn" onclick="closeNavi()"></div>
+	</div><!-- CLOSE NAV CONTENT -->
+</div><!-- CLOSE NAV -->
+<div class="nav_bg"></div><!-- CLOSE NAV BG -->
+
+<div class="ua">Good <span id="greeting"></span>! You are using <span id="browsertype"></span> with <span id="platform"></span>.</div>
+</body>
+<html>
