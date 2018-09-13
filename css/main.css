@@ -190,7 +190,7 @@ body {
 
 /* START HOMEPAGE */
 .hp .feature {
-	background-image:url("../image/_feature/hp.jpg");
+	background-image:url("../image/feature/hp.jpg");
 	display:flex;
 	align-items:center;
 	justify-content:center;
@@ -249,10 +249,10 @@ body {
 	background-image:url("../image/me_au_yr9learningjourney_atshoreham.jpg");
 }
 .hp .single:nth-child(5) {
-	background-image:url("../image/_feature/mymusiccover.jpg");
+	background-image:url("../image/feature/mymusiccover.jpg");
 }
 .hp .single:nth-child(6) {
-	background-image:url("../image/_feature/myproduction.gif");
+	background-image:url("../image/feature/myproduction.gif");
 }
 .hp .single:nth-child(9) {
 	background-image:url("../image/view_sky_cloud1.jpg");
@@ -334,7 +334,7 @@ body {
 	align-items:center;
 	justify-content:center;
 	display:flex;
-	background:url("../image/_feature/mymusiccover.jpg");
+	background:url("../image/feature/mymusiccover.jpg");
 }
 .mymusiccover .main {
 	width:900px;
@@ -933,7 +933,7 @@ body {
 	background-repeat:repeat;
 }
 .myproduction .feature {
-	background-image:url("../image/_feature/myproduction.gif");
+	background-image:url("../image/feature/myproduction.gif");
 }
 .myproduction .title span:nth-child(1) {
 	font-size:75px;
