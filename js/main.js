@@ -88,12 +88,12 @@
             	}, 300);
 	}
 	function viewPhoto2() {
-		$(".hp .displayhorizontal").attr('style','background-image:url("./image/_feature/mymusiccover.jpg");');
+		$(".hp .displayhorizontal").attr('style','background-image:url("./image/feature/mymusiccover.jpg");');
 		$(".hp .displayhorizontal").removeClass("na");
 	}
 	
 	function viewPhoto3() {
-		$(".hp .displayhorizontal").attr('style','background-image:url("./image/_feature/myproduction.gif");');
+		$(".hp .displayhorizontal").attr('style','background-image:url("./image/feature/myproduction.gif");');
 		$(".hp .displayhorizontal").removeClass("na");
 	}
 	function viewPhoto4(){
